@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
-@Entity
-@Table(name = "autor")
+
+@Entity(name = "autor")
 public class Autor implements Serializable {
 
     @Id
@@ -19,7 +19,7 @@ public class Autor implements Serializable {
     private String nacionalidad;
 
     @ManyToMany(mappedBy = "autores")
-    private Set<Libro> libros;
+    private Set<libro> libros;
 
     public Autor() {
         // Constructor vacío requerido por Hibernate

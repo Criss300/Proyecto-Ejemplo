@@ -1,13 +1,12 @@
 package com.ejercicio1.criss.model;
 
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
-@Entity
-@Table(name = "libro")
-public class Libro implements Serializable {
+
+@Entity(name = "Libro")
+public class libro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +42,7 @@ public class Libro implements Serializable {
     )
     private Set<Categoria> categorias;
 
-    public Libro() {
+    public libro() {
         // Constructor vacío requerido por JPA
     }
 

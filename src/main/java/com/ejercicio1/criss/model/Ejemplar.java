@@ -20,7 +20,7 @@ public class Ejemplar implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "id_libro", nullable = false)
-    private Libro libro;
+    private libro id_libro;
 
     public Ejemplar() {
         // Constructor vacío necesario para JPA
