@@ -1,20 +1,25 @@
 package com.ejercicio1.criss.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "ejemplar")
-public class Ejemplar {
+public class Ejemplar implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idEjemplar;
+    private Integer id;
 
+    @Column(nullable = false, unique = true, length = 20)
     private String codigoBarras;
-    private String estado; // Disponible, Prestado, Dañado, etc.
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoEjemplar estado;
 
     @ManyToOne
-    @JoinColumn(name = "idLibro")
+    @JoinColumn(name = "id_libro", nullable = false)
     private Libro libro;
 
     // Getters y Setters

@@ -1,21 +1,16 @@
 package com.ejercicio1.criss.model;
 
 import jakarta.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 @Entity
 @Table(name = "autor")
-public class Autor {
+public class Autor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idAutor;
+    private Integer id;
 
-    private String nombre;
-    private String nacionalidad;
-
-    @ManyToMany(mappedBy = "autores")
-    private Set<Libro> libros;
-
-    // Getters y setters
-}
+    @Column(nullable = false, length = 100)
+    private 
