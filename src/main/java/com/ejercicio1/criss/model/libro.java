@@ -43,5 +43,9 @@ public class Libro implements Serializable {
     )
     private Set<Categoria> categorias;
 
+    public Libro() {
+        // Constructor vacío requerido por JPA
+    }
+
     // Getters y Setters
 }

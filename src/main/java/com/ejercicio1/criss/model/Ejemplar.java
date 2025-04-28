@@ -22,5 +22,9 @@ public class Ejemplar implements Serializable {
     @JoinColumn(name = "id_libro", nullable = false)
     private Libro libro;
 
+    public Ejemplar() {
+        // Constructor vacío necesario para JPA
+    }
+
     // Getters y Setters
 }

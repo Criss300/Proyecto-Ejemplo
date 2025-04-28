@@ -13,4 +13,17 @@ public class Autor implements Serializable {
     private Integer id;
 
     @Column(nullable = false, length = 100)
-    private 
+    private String nombre;
+
+    @Column(length = 50)
+    private String nacionalidad;
+
+    @ManyToMany(mappedBy = "autores")
+    private Set<Libro> libros;
+
+    public Autor() {
+        // Constructor vacío requerido por Hibernate
+    }
+
+    // Getters y Setters
+}
