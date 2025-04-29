@@ -11,11 +11,27 @@ public class Editorial implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 100, unique = true)
+    @Column(nullable = false, length = 100)
     private String nombre;
 
-    @Column(length = 255)
-    private String direccion;
+    public Editorial() {
+        // Constructor vacío requerido por JPA
+    }
 
     // Getters y Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) { 
+        this.id = id; 
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 }

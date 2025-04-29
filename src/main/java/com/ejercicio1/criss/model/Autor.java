@@ -2,10 +2,9 @@ package com.ejercicio1.criss.model;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
-
-@Entity(name = "autor")
+@Entity
+@Table(name = "autor")
 public class Autor implements Serializable {
 
     @Id
@@ -18,12 +17,32 @@ public class Autor implements Serializable {
     @Column(length = 50)
     private String nacionalidad;
 
-    @ManyToMany(mappedBy = "autores")
-    private Set<libro> libros;
-
     public Autor() {
-        // Constructor vacío requerido por Hibernate
+        // Constructor vacío requerido por JPA
     }
 
     // Getters y Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) { 
+        this.id = id; 
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNacionalidad() {
+        return nacionalidad;
+    }
+
+    public void setNacionalidad(String nacionalidad) {
+        this.nacionalidad = nacionalidad;
+    }
 }
