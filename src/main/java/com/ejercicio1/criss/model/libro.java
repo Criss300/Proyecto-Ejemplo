@@ -37,6 +37,7 @@ public class libro implements Serializable {
         this.editorial = editorial;
     }
 
+
     // Getters y Setters
     public Integer getId() {
         return id;

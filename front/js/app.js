@@ -166,7 +166,9 @@ async function getModify(id) {
     } 
 }
 async function updateBook() {
-    const id=document.getElementById("idmodificacion")
+    const id=parseInt(document.getElementById("idmodificacion").value)
+    console.log(id);
+    
     const url = `http://localhost:8080/api/libros/${id}`;
     let headersList = {
         "Accept": "*/*",
@@ -178,7 +180,7 @@ async function updateBook() {
         "titulo": document.getElementById("titulo").value.trim(),
         "isbn": document.getElementById("isbn").value.trim(),
         "fechaPublicacion": document.getElementById("fecha").value,
-        "editorial": document.getElementById("editorial").value
+        "editorial": { "id": parseInt(document.getElementById("editorial").value)}
     });    
     try {
         const response = await fetch(url, {

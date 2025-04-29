@@ -17,6 +17,10 @@ public class Editorial implements Serializable {
     public Editorial() {
         // Constructor vacío requerido por JPA
     }
+    public Editorial(int id,String nombre){
+        this.id=id;
+        this.nombre=nombre;
+    }
 
     // Getters y Setters
     public Integer getId() {
