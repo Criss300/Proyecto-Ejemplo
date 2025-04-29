@@ -1,52 +1,129 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Biblioteca</title>
-    <link rel="stylesheet" href="../front/css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sistema de Biblioteca</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"/>
+  <style>
+    body {
+      background: linear-gradient(to right, #eef2f3, #8e9eab);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      font-weight: bold;
+    }
+
+    .form-label {
+      font-weight: 500;
+    }
+
+    .btn-success {
+      background-color: #28a745;
+      border: none;
+    }
+
+    .btn-success:hover {
+      background-color: #218838;
+    }
+
+    .table thead th {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .modal-header {
+      background-color: #0d6efd;
+      color: white;
+    }
+
+    .modal-footer .btn-primary {
+      background-color: #0d6efd;
+    }
+
+    .btn i {
+      margin-right: 5px;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Sistema de Biblioteca</h1>
+  <div class="container py-5">
+    <h1 class="text-center text-dark mb-5">📚 Sistema de Biblioteca</h1>
 
-    <h2>Agregar / Editar Libro</h2>
-    <form id="libroForm" onsubmit="guardarLibro(event)">
-        <input type="hidden" id="libroId" name="libroId">
+    <!-- Formulario -->
+    <div class="card mb-5">
+      <div class="card-header bg-primary text-white fs-5">
+        <i class="bi bi-journal-plus"></i> Agregar / Editar Libro
+      </div>
+      <div class="card-body">
+        <form id="libroForm" onsubmit="guardarLibro(event)">
+          <input type="hidden" id="libroId" name="libroId">
 
-        <label for="titulo">Título:</label>
-        <input type="text" id="titulo" name="titulo" required>
-        
-        <label for="isbn">ISBN:</label>
-        <input type="text" id="isbn" name="isbn" required>
+          <div class="mb-3">
+            <label for="titulo" class="form-label">Título:</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Escribe el título del libro" required>
+          </div>
+          <div class="mb-3" style="display: none;">
+            <label for="idmodificacion" class="form-label">id:</label>
+            <input type="text" id="idmodificacion" name="idmodificacion" class="form-control" placeholder="Escribe el título del libro" required>
+          </div>
 
-        <label for="fecha">Título:</label>
-        <input type="date" id="fecha" name="fecha" required>
-        
-        <label for="editorial">Editorial:</label>
-        <select id="editorial" name="editorial" required>
-            <option value="1">Editorial Alfa</option>
-            <option value="2">Editorial Beta</option>
-            <option value="3">Editorial Gamma</option>
-        </select>
-        
-        <button type="button" id="Agregar">Guardar</button>
-    </form>
+          <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN:</label>
+            <input type="text" id="isbn" name="isbn" class="form-control" placeholder="ISBN del libro" required>
+          </div>
 
-    <h2>Lista de Libros</h2>
-    <table>
+          <div class="mb-3">
+            <label for="fecha" class="form-label">Fecha de Publicación:</label>
+            <input type="date" id="fecha" name="fecha" class="form-control" required>
+          </div>
+
+          <div class="mb-4">
+            <label for="editorial" class="form-label">Editorial:</label>
+            <select id="editorial" name="editorial" class="form-select" required>
+              <!-- Opciones dinámicas -->
+            </select>
+          </div>
+
+          <button type="button" id="Agregar" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Guardar
+          </button>
+          <button type="button" id="actualizar" style="display:none;" class="btn btn-success">
+            <i class="bi bi-check-circle"></i> Actualizar
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Tabla de libros -->
+    <h2 class="text-dark mb-4"><i class="bi bi-book-half"></i> Lista de Libros</h2>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle text-center">
         <thead>
-            <tr>
-                <th>ID</th>
-                <th>Título</th>
-                <th>ISBN</th>
-                <th>Editorial</th>
-                <th>Acciones</th>
-            </tr>
+          <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>ISBN</th>
+            <th>Editorial</th>
+            <th>Acciones</th>
+          </tr>
         </thead>
-        <tbody id="libroList"></tbody>
-    </table>
+        <tbody id="libroList">
+          <!-- Contenido dinámico -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-    <script src="../front/js/app.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>

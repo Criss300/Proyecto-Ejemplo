@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+
 @RestController
 @RequestMapping("/api/libros")
 public class LibroController {
@@ -55,5 +55,19 @@ public class LibroController {
         }
         libroService.deleteLibro(id);
         return ResponseEntity.ok("✅ Libro eliminado correctamente.");
+    }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> findAll() {
+        var lista = libroService.findAll();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Object> getOneauthor(@PathVariable int id) {
+        var author = libroService.getLibroById(id);
+        if (!author.isPresent())
+            return new ResponseEntity<>("", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(author, HttpStatus.OK);
     }
 }

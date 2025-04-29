@@ -17,7 +17,7 @@ public class LibroService {
     }
 
     // ✅ Obtener todos los libros
-    public List<libro> getAllLibros() {
+    public List<libro> findAll() {
         return libroRepository.findAll();
     }
 
