@@ -17,3 +17,6 @@ async function guardarLibro() {
     const responseData = await response.text();
     console.log("✅ Respuesta del backend:", responseData);
 }
+document.getElementById("Agregar").addEventListener("click",function () {
+    guardarLibro();
+})

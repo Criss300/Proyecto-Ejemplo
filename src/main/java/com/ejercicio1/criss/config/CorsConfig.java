@@ -6,31 +6,33 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-import java.util.Arrays;
+
 
 @Configuration
 public class CorsConfig {
 
     @Bean
     public CorsFilter corsFilter() {
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
 
-        // ✅ Permitir acceso desde cualquier origen
-        config.setAllowedOriginPatterns(Arrays.asList("*"));
+        //permitir solicitudes desde todos los origenes
+        // //  config.addAllowedOrigin("*");
+        config.addAllowedOrigin("http://127.0.0.1:5500");
+        //config.addAllowedOrigin("n cantidad de servidores");
 
-        // ✅ Permitir métodos HTTP específicos para mayor seguridad
-        config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
+        //permitir solicitudes con estos metodos HTTP
+        config.addAllowedMethod("GET");
+        config.addAllowedMethod("POST");
+        config.addAllowedMethod("PUT");
+        config.addAllowedMethod("DELETE");
 
-        // ✅ Permitir todos los encabezados
-        config.setAllowedHeaders(Arrays.asList("*"));
-
-        // ✅ Permitir credenciales (cookies, tokens, etc.)
+        //permitir el envio de ciertos encabezados en las solicitudes
+        config.addAllowedHeader("Authorization");
+        config.addAllowedHeader("Content-Type");
+        //config.setAllowedHeaders(Arrays.asList("Authorization", "Content-Type"));
         config.setAllowCredentials(true);
-
-        // ✅ Aplicar la configuración solo a las rutas del backend necesarias
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/api/**", config);
-
+        source.registerCorsConfiguration("/**", config);
         return new CorsFilter(source);
     }
 }
