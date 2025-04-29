@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="../front/css/styles.css">
+</head>
+<body>
+
+    <h1>Sistema de Biblioteca</h1>
+
+    <h2>Agregar / Editar Libro</h2>
+    <form id="libroForm" onsubmit="guardarLibro(event)">
+        <input type="hidden" id="libroId" name="libroId">
+
+        <label for="titulo">Título:</label>
+        <input type="text" id="titulo" name="titulo" required>
+        
+        <label for="isbn">ISBN:</label>
+        <input type="text" id="isbn" name="isbn" required>
+        
+        <label for="editorial">Editorial:</label>
+        <select id="editorial" name="editorial" required>
+            <option value="1">Editorial Alfa</option>
+            <option value="2">Editorial Beta</option>
+            <option value="3">Editorial Gamma</option>
+        </select>
+        
+        <button type="submit">Guardar</button>
+    </form>
+
+    <h2>Lista de Libros</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Título</th>
+                <th>ISBN</th>
+                <th>Editorial</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody id="libroList"></tbody>
+    </table>
+
+    <script src="../front/js/app.js"></script>
+</body>
+</html>
