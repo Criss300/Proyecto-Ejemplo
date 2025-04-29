@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-CrissApplication<criss>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.ejercicio1.criss.CrissApplication",
+            "projectName": "criss",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
